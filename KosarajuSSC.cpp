@@ -48,10 +48,10 @@ int kosaraju(int V, vector<int> adjList[])
 
     // Reverse the edges
     vector<int> adjList2[V];
-    for(int i = 0; i<V; i++){
-        visited[i] = false;
-        for(auto at: adjList[i]){
-            adjList2[at].push_back(i);
+    for(int at = 0; at<V; at++){
+        visited[at] = false;
+        for(auto to: adjList[at]){
+            adjList2[to].push_back(at);
         }
     }
 
