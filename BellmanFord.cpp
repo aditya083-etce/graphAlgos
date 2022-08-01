@@ -9,7 +9,7 @@ BELLMAN FORD ALGORITHIM
     1. Initialise Dis array, Dis[S] = 0 
     2. Iterate V - 1 times (Relax the edges)
     3. Visit the edges and if Dis[u] + w < Dis[v] then update Dis[v] = Dis[u] + w
-    4. coming out from the loop iterate agi througn edgeList if  Dis[u] + w < Dis[v] -> -ve edge cycle is detected
+    4. coming out from the loop iterate again througn edgeList if  Dis[u] + w < Dis[v] -> -ve edge cycle is detected
         if it is false return dis vection which contains the Shortest path
 
 Time Complexity - O(V*E)
@@ -42,10 +42,10 @@ bool ShortestPathBellmanFord(int V, int S, vector<vector<int>>edgeList){
         int w = vec[2];
         
         if(Dis[u] != INT_MAX and Dis[u] + w < Dis[v]){
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 int main(){

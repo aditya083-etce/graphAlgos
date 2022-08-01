@@ -25,7 +25,7 @@ vector<int> khanAlgo(int V,  vector<int> adj[])
 		res.push_back(at);
 
 		for(int to: adj[at]){
-			indeg[to]--;
+			indeg[to]--; 
 			if (indeg[to] == 0){
 				Q.push(to);
 			}

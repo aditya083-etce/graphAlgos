@@ -48,7 +48,7 @@ int main(){
     // n -> vertices   m -> edges
     int n, m;
     cin >> n >> m;
-
+-
     vector<vector<int>> adjList[n];
 
     for(int i = 0; i<m; i++){

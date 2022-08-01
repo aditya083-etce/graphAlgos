@@ -17,7 +17,7 @@ bool detectCycle(int at, vector<int> adj[], vector<int> &color) {
 
 bool graphColoringCycleDetection(int V, vector<int> adj[]){
     // 0 -> not visited   1 -> visited (in rs stack)  2-> visited + processed (not in rs stack)
-    vector<int> color(V, 0); // thick color [1] as rs
+    vector<int> color(V, 0); // think color [1] as rs
 
     for(int i = 0; i<V; i++){
         if (color[i] == 0){

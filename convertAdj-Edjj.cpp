@@ -26,7 +26,7 @@ int main(){
     ConvertAdjtoEdj(n, adj);
 
     for(int i = 0; i<m; i++){
-        cout << edgeList[i][0] << edgeList[i][1] <<  edgeList[i][12 << endl;
+        cout << edgeList[i][0] << edgeList[i][1] <<  edgeList[i][2] << endl;
     }
     return 0;
 }
