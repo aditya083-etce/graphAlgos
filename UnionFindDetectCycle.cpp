@@ -6,63 +6,52 @@ using namespace std;
 Detect Cycle Of Undirected Graph ( UNION FIND )
 
     1. Intialize the disjoint set array
-    2. Find Ansolute Root
+    2. Find Ansolute Parent
     3. Union operation (if absoute roots are not same)
         if absolute roots are same the cycle found 
 
 Time Complexity - O(E * V)
 ======================================= =========*/
 
-vector<int> PARENT; // Disjoint set array (parent)
+int parent[100000];
+int Sz[100000]; // rank
 
-vector<int> Sz; // Size or Rank
-
-void initialize(int n)
-{
-    PARENT.resize(n);
-    Sz.resize(n, 1);
-    for(int i = 0; i<n; i++){
-        PARENT[i] = i;
+void initialize(int n) {
+    for(int i = 1; i<=n; i++) {
+        parent[i] = i;
+        Sz[i] = 1;
     }
 }
 
-int findRoot(int v){
-    if (v == PARENT[v]){
-        return v;
-    }
-    return PARENT[v] = findRoot(PARENT[v]);
+int findParen(int node) {
+    if (node == parent[node]) return node;
+    
+    return parent[node] = findParen(parent[node]);
 }
 
-
-void UnionRoot(int x, int y)
-{
-    int g1 = findRoot(x);
-    int g2 = findRoot(y);
-
-    if (g1 == g2){
-        return;
-    }
-
-    if (Sz[g2] <= Sz[g1]){
-        PARENT[g2] = g1;
-        Sz[g1] += Sz[g2];
-    }else{
-        PARENT[g1] = g2;
-        Sz[g2] += Sz[g1];
+void unionNodes(int u, int v) {
+    u = findParen(u);
+    v = findParen(v);
+    
+    if (Sz[u] <= Sz[v]){
+        parent[u] = v;
+        Sz[v] += Sz[u]; 
+    } else {
+        parent[v] = u;
+        Sz[u] += Sz[v];
     }
 }
 
 bool detectCycle(int V, vector<pair<int, int>> edgeList){
-
     initialize(V);
 
     for(auto edge: edgeList){
-        int p1 = findRoot(edge.first);
-        int p2 = findRoot(edge.second);
+        int p1 = findParen(edge.first);
+        int p2 = findParen(edge.second);
         
         if (p1 == p2) return true;
 
-        UnionRoot(p1, p2);
+        unionNode(p1, p2);
     }
     return false;
 }
