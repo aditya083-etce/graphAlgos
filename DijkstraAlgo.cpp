@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-// Here the vertices starts from 0
+// Here the vertices starts from 0 // directed
 // Dijkstra fails for negative cycle and negative edge
 
 /* =================================== =========
@@ -48,7 +48,6 @@ int main(){
     // n -> vertices   m -> edges
     int n, m;
     cin >> n >> m;
--
     vector<vector<int>> adjList[n];
 
     for(int i = 0; i<m; i++){
@@ -63,11 +62,9 @@ int main(){
 
     vector<int> path = ShortestPathDijkstra(n, startNode, adjList);
 
-    for(int p: path){
-        cout << p << " ";
+    for(int i = 0; i<n; i++){
+        cout << "Distance from " << startNode <<" to " << i <<" node: " << path[i] << endl;
     }
-
-    cout<<endl;
 
     return 0;
 }
