@@ -27,9 +27,7 @@ void initialize(int v)
 }
 
 int findRoot(int v){
-    if (v == PARENT[v]){
-        return v;
-    }
+    if (v == PARENT[v]) return v;
     return PARENT[v] = findRoot(PARENT[v]);
 }
 
@@ -39,9 +37,7 @@ void UnionRoot(int x, int y)
     int g1 = findRoot(x);
     int g2 = findRoot(y);
 
-    if (g1 == g2){
-        return;
-    }
+    if (g1 == g2) return;
 
     if (Sz[g2] <= Sz[g1]){
         PARENT[g2] = g1;

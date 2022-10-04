@@ -35,8 +35,8 @@ vector <int> ShortestPathDijkstra(int V, int S, vector<vector<int>> adjList[])
             int to = ngbrs[0];
             int wt = ngbrs[1];
 
-            if (!INCLU[to] and Dis[at] + wt < Dis[to]){
-                Dis[to] = Dis[at] + wt;
+            if (!INCLU[to] and d + wt < Dis[to]){
+                Dis[to] = d + wt;
                 PQ.push({Dis[to], to});
             }
         }
